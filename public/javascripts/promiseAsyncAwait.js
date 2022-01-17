@@ -18,7 +18,9 @@ const writeList = (data) => {
 
 fetch('./javascripts/cars.json')
 .then(response => response.json())
-.then(data => writeList(data));
+.then(data => writeList(data))
+.catch(console.log('Error has occured, check the code'));
+// .catch(console.log('Error occured, check code'));
 
 // const Cars = carsData['Cars'];
 
