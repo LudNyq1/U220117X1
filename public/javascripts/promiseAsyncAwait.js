@@ -16,10 +16,19 @@ const writeList = (data) => {
 
 }
 
-fetch('./javascripts/cars.json')
-.then(response => response.json())
-.then(data => writeList(data))
-.catch(console.log('Error has occured, check the code'));
+const fetchFunction = async () => {
+    let response = await fetch('./javascripts/cars.json');
+
+    if(!response.ok){
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let data = await response.json();
+    return data;
+}
+
+fetchFunction()
+.then(data => writeList(data));
+
 // .catch(console.log('Error occured, check code'));
 
 // const Cars = carsData['Cars'];
